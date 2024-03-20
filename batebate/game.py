@@ -1,6 +1,6 @@
 # Importa as bibliotecas necessárias
 import pygame
-import macmovimento  # Módulo contendo as classes Paddle e Ball
+import macmovimento 
 
 class Game:
     def __init__(self):
@@ -11,8 +11,8 @@ class Game:
         self.screen = pygame.display.set_mode((self.screen_width, self.screen_height))  # Cria a janela do jogo
         self.clock = pygame.time.Clock()  # Relógio para controle de frames
         self.running = True  # Flag para indicar se o jogo está em execução
-        # Raquete controlada pelo PC à esquerda (IA)
-        self.paddle_left = macmovimento.Paddle(30, self.screen_height / 2 - 50, None, None)  # IA, teclas não necessárias
+        # Raquete controlada pelo PC
+        self.paddle_left = macmovimento.Paddle(30, self.screen_height / 2 - 50, None, None) 
         # Raquete controlada pelo jogador à direita
         self.paddle_right = macmovimento.Paddle(self.screen_width - 50, self.screen_height / 2 - 50, pygame.K_UP, pygame.K_DOWN)
         self.ball = macmovimento.Ball(self.screen_width / 2, self.screen_height / 2)  # Bola no centro da tela
@@ -24,7 +24,7 @@ class Game:
                 if event.type == pygame.QUIT:  # Verifica se o evento é de saída (fechar janela)
                     self.running = False  # Encerra o loop principal
             
-            # Movimenta a raquete controlada pela IA
+            # Movimenta a raquete controlada pelo PC
             self.move_pc_paddle()
             # Movimenta a raquete controlada pelo jogador
             self.paddle_right.move(self.screen_height)
@@ -49,7 +49,7 @@ class Game:
         pygame.quit()  # Encerra o Pygame ao sair do loop principal
 
     def move_pc_paddle(self):
-        # Lógica para movimentar a raquete controlada pela IA em direção à bola
+        # Lógica para movimentar a raquete controlada pelO pc em direção à bola
         if self.ball.rect.centery > self.paddle_left.rect.centery:
             # Move para baixo se a bola estiver abaixo da raquete
             self.paddle_left.rect.y += min(self.ball.rect.centery - self.paddle_left.rect.centery, self.paddle_left.speed)
