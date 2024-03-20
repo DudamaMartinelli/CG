@@ -29,6 +29,7 @@ clock = pygame.time.Clock()
 velocidade_x = random.randint(-1, 1)
 velocidade_y = random.randint(-1, 1)
 
+
 while velocidade_x == 0:
     velocidade_x = random.randint(-1, 1)
 while velocidade_y == 0:
@@ -48,11 +49,16 @@ while True:
     if texto_rect.right >= largura or texto_rect.left <= 0:
         velocidade_x = -velocidade_x  # Inverte a direção horizontal
         texto = fonte.render("Maria", True, VERMELHO if velocidade_x > 0 else VERDE)
+        cor_texto = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+        texto = fonte.render("Maria", True, cor_texto)
+        
 
     # Verifica as bordas da tela para cima e para baixo
     if texto_rect.bottom >= altura or texto_rect.top <= 0:
         velocidade_y = -velocidade_y  # Inverte a direção vertical
         texto = fonte.render("Maria", True, AMARELO if velocidade_y > 0 else AZUL)
+        cor_texto = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+        texto = fonte.render("Maria", True, cor_texto)
 
     clock.tick(120)
     tela.fill(PRETO)
